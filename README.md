@@ -46,6 +46,7 @@ expagncy -u unum -o fichier.xml -d -t
 ##Références:
 
 [OpenClassroom java xml](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
+[Syntaxe Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ##Fichier des paramètres : 
 
@@ -92,3 +93,4 @@ mysql.dbserver.drivername=MySQL
 mysql.dbserver.driverclass=com.mysql.jdbc.Driver
 mysql.dbserver.nb.thread=8
 ```
+
