@@ -1,0 +1,36 @@
+<!-- Racine -->
+<!ELEMENT agences (agence*)>
+
+<!-- agence -->
+<!ELEMENT agence (id?, client, nom?, codeAgence, appellationClient?, adressePostale?, email?, telephones?, etat?)>
+
+<!-- IDs -->
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT client (#PCDATA)>
+
+<!-- Nom, codeAgence et appellation client -->
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT codeAgence (#PCDATA)>
+<!ELEMENT appellationClient (#PCDATA)>
+
+<!-- Bloc adressePostale -->
+<!ELEMENT adressePostale (adresse?, complement?, codePostal?, ville?)>
+<!ELEMENT adresse (#PCDATA)>
+<!ELEMENT complement (#PCDATA)>
+<!ELEMENT codePostal (#PCDATA)>
+<!ELEMENT ville (#PCDATA)>
+
+<!-- Email -->
+<!ELEMENT email (#PCDATA)>
+
+<!-- Bloc téléphones -->
+<!ELEMENT telephones (telephone*)>
+<!ELEMENT telephone (#PCDATA)>
+<!ATTLIST telephone type (bureau | direct | fax) #REQUIRED>
+
+<!-- Bloc etat -->
+<!ELEMENT etat (actif?, debut?, fin?)>
+<!ELEMENT actif (#PCDATA)>
+<!ELEMENT debut (#PCDATA)>
+<!ELEMENT fin (#PCDATA)>
+

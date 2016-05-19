@@ -176,109 +176,146 @@ public class ExpAgency {
     private void AddToXMLDocument(Fagency MyFagency) {
 
         Comment MyComment;
-        Element Agency;
-        Element A6num;
-        Element A6unum;
-        Element A6name;
-        Element A6extname;
-        Element A6abbname;
-        Element A6address;
-        Element A6address2;
-        Element A6poscode;
-        Element A6city;
-        Element A6email;
+        Element MyElement;
         Element Phones;
-        Element A6teloff;
-        Element A6teldir;
-        Element A6telfax;
-        Element A6active;
-        Element A6begactive;
-        Element A6endactive;
+        String MyString;
+        int myInt;
+        Timestamp MyTimestamp;
+        
+        Element Agency;
+        
         TimeZone MyTimeZone = TimeZone.getTimeZone("Europe/Paris");
         DateFormat MyDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        MyComment = MyDocument.createComment(MyFagency.getA6name());
-        MyAgencies.appendChild(MyComment);
+        MyString = MyFagency.getA6name();
+        if (MyString != null) {
+            MyComment = MyDocument.createComment(MyString);
+            MyAgencies.appendChild(MyComment);
+        }
 
         Agency = MyDocument.createElement("agence");
         MyAgencies.appendChild(Agency);
 
         // Agency ID
-        A6num = MyDocument.createElement("id");
-        Agency.appendChild(A6num);
-        A6num.appendChild(MyDocument.createTextNode(String.valueOf(MyFagency.getA6num())));
-
+        myInt = MyFagency.getA6num();
+        if (myInt >= 0) {
+            MyElement = MyDocument.createElement("id");
+            MyElement.appendChild(MyDocument.createTextNode(String.valueOf(myInt)));
+            Agency.appendChild(MyElement);
+        }
+        
         // Customer ID
-        A6unum = MyDocument.createElement("client");
-        Agency.appendChild(A6unum);
-        A6unum.appendChild(MyDocument.createTextNode(String.valueOf(MyFagency.getA6unum())));
+        myInt = MyFagency.getA6unum();
+        if (myInt >= 0) {
+            MyElement = MyDocument.createElement("client");
+            MyElement.appendChild(MyDocument.createTextNode(String.valueOf(myInt)));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency name
-        A6name = MyDocument.createElement("nom");
-        Agency.appendChild(A6name);
-        A6name.appendChild(MyDocument.createTextNode(MyFagency.getA6name()));
+        MyString = MyFagency.getA6name();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("nom");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency abbreviated name
-        A6abbname = MyDocument.createElement("codeAgence");
-        Agency.appendChild(A6abbname);
-        A6abbname.appendChild(MyDocument.createTextNode(MyFagency.getA6abbname()));
+        MyString = MyFagency.getA6abbname();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("codeAgence");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency external name
-        A6extname = MyDocument.createElement("appellationClient");
-        Agency.appendChild(A6extname);
-        A6extname.appendChild(MyDocument.createTextNode(MyFagency.getA6extname()));
+        MyString = MyFagency.getA6extname();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("appellationClient");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency address
-        A6address = MyDocument.createElement("adresse");
-        Agency.appendChild(A6address);
-        A6address.appendChild(MyDocument.createTextNode(MyFagency.getA6daddress()));
-        A6address2 = MyDocument.createElement("complement");
-        Agency.appendChild(A6address2);
-        A6address2.appendChild(MyDocument.createTextNode(MyFagency.getA6daddress2()));
-        A6poscode = MyDocument.createElement("codePostal");
-        Agency.appendChild(A6poscode);
-        A6poscode.appendChild(MyDocument.createTextNode(MyFagency.getA6dposcode()));
-        A6city = MyDocument.createElement("ville");
-        Agency.appendChild(A6city);
-        A6city.appendChild(MyDocument.createTextNode(MyFagency.getA6dcity()));
+        MyString = MyFagency.getA6daddress();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("adresse");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
+        MyString = MyFagency.getA6daddress2();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("complement");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
+        MyString = MyFagency.getA6dposcode();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("codePostal");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
+        MyString = MyFagency.getA6dcity();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("ville");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency email
-        A6email = MyDocument.createElement("email");
-        Agency.appendChild(A6email);
-        A6email.appendChild(MyDocument.createTextNode(MyFagency.getA6email()));
+        MyString = MyFagency.getA6email();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("email");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            Agency.appendChild(MyElement);
+        }
 
         // Agency phones
         Phones = MyDocument.createElement("telephones");
-
-        A6teloff = MyDocument.createElement("telephone");
-        A6teloff.appendChild(MyDocument.createTextNode(MyFagency.getA6teloff()));
-        A6teloff.setAttribute("type", "bureau");
-
-        A6teldir = MyDocument.createElement("telephone");
-        A6teldir.appendChild(MyDocument.createTextNode(MyFagency.getA6teldir()));
-        A6teldir.setAttribute("type", "direct");
-
-        A6telfax = MyDocument.createElement("telephone");
-        A6telfax.appendChild(MyDocument.createTextNode(MyFagency.getA6telfax()));
-        A6telfax.setAttribute("type", "fax");
-
-        Phones.appendChild(A6teloff);
-        Phones.appendChild(A6teldir);
-        Phones.appendChild(A6telfax);
         Agency.appendChild(Phones);
 
-        // Agency activity
-        A6active = MyDocument.createElement("actif");
-        Agency.appendChild(A6active);
-//          A6active.appendChild(MyDocument.createTextNode(String.valueOf(MyFagency.getA6active())));
-        A6active.appendChild(MyDocument.createTextNode((MyFagency.getA6active() == 1) ? "OUI" : "NON"));
-        A6begactive = MyDocument.createElement("debut");
-        Agency.appendChild(A6begactive);
-        A6begactive.appendChild(MyDocument.createTextNode(MyDateFormat.format(MyFagency.getA6begactive())));
-        A6endactive = MyDocument.createElement("fin");
-        Agency.appendChild(A6endactive);
-        A6endactive.appendChild(MyDocument.createTextNode(MyDateFormat.format(MyFagency.getA6endactive())));
+        MyString = MyFagency.getA6teloff();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("telephone");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            MyElement.setAttribute("type", "bureau");
+            Phones.appendChild(MyElement);
+        }
 
+        MyString = MyFagency.getA6teldir();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("telephone");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            MyElement.setAttribute("type", "direct");
+            Phones.appendChild(MyElement);
+        }
+
+        MyString = MyFagency.getA6telfax();
+        if (MyString != null) {
+            MyElement = MyDocument.createElement("telephone");
+            MyElement.appendChild(MyDocument.createTextNode(MyString));
+            MyElement.setAttribute("type", "fax");
+            Phones.appendChild(MyElement);
+        }
+
+        // Agency activity
+        MyElement = MyDocument.createElement("actif");
+        MyElement.appendChild(MyDocument.createTextNode((MyFagency.getA6active() == 1) ? "OUI" : "NON"));
+        Agency.appendChild(MyElement);
+        
+        MyTimestamp = MyFagency.getA6begactive();
+        if (MyTimestamp != null) {
+            MyElement = MyDocument.createElement("debut");
+            MyElement.appendChild(MyDocument.createTextNode(MyDateFormat.format(MyTimestamp)));
+            Agency.appendChild(MyElement);
+        }
+
+        MyTimestamp = MyFagency.getA6endactive();
+        if (MyTimestamp != null) {
+            MyElement = MyDocument.createElement("fin");
+            MyElement.appendChild(MyDocument.createTextNode(MyDateFormat.format(MyTimestamp)));
+            Agency.appendChild(MyElement);
+        }
     }
   
   /**
@@ -302,10 +339,10 @@ public class ExpAgency {
 
         // Prologue
         MyTransformer.setOutputProperty(OutputKeys.VERSION, "1.0");
-        MyTransformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-        MyTransformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
-//        Marche mieux, va savoir pourquoi ???          
-//          MyDocument.setXmlStandalone(true);
+//        MyTransformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        MyTransformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-15");
+        MyTransformer.setOutputProperty(OutputKeys.STANDALONE, "no");
+        MyTransformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,"agences.dtd");
 
         // Formatting results
         MyTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -340,7 +377,6 @@ public class ExpAgency {
         int i;
         int n;
         int ip1;
-        int aux;
 
         n = Args.length;
 
@@ -498,7 +534,7 @@ public class ExpAgency {
             MyExpAgency = new ExpAgency(Args);
         }
         catch (Exception MyException) {
-            System.out.println("Problème lors du lancement de ExpAgency");
+            System.out.println("Problème lors du lancement de ExpAgency" + MyException);
         }
         
         System.out.println("Traitement terminé.");

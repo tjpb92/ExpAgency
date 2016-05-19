@@ -1,6 +1,6 @@
 # Projet Export d'agences
 
-Le but de ce projet est de créer un programme Java permettant d'exporter les agences d'un service d'urgenec au format XML.
+Le but de ce projet est de créer un programme Java permettant d'exporter les agences d'un service d'urgence au format XML.
 
 ##Utilisation:
 ```
@@ -17,7 +17,9 @@ expagncy -u unum -o fichier.xml -d -t
 
 ##Format XML reconnu :
 ```
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?>
+<!DOCTYPE agences SYSTEM "agences.dtd">
+
 <agences>
   <!--utopia-->
   <agence>
@@ -43,10 +45,54 @@ expagncy -u unum -o fichier.xml -d -t
 </agences>
 ```
 
+##DTD officielle :
+
+Nom du fichier : *agences.dtd*
+
+```
+<!-- Racine -->
+<!ELEMENT agences (agence*)>
+
+<!-- agence -->
+<!ELEMENT agence (id?, client, nom?, codeAgence, appellationClient?, adressePostale?, email?, telephones?, etat?)>
+
+<!-- IDs -->
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT client (#PCDATA)>
+
+<!-- Nom, codeAgence et appellation client -->
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT codeAgence (#PCDATA)>
+<!ELEMENT appellationClient (#PCDATA)>
+
+<!-- Bloc adressePostale -->
+<!ELEMENT adressePostale (adresse?, complement?, codePostal?, ville?)>
+<!ELEMENT adresse (#PCDATA)>
+<!ELEMENT complement (#PCDATA)>
+<!ELEMENT codePostal (#PCDATA)>
+<!ELEMENT ville (#PCDATA)>
+
+<!-- Email -->
+<!ELEMENT email (#PCDATA)>
+
+<!-- Bloc téléphones -->
+<!ELEMENT telephones (telephone*)>
+<!ELEMENT telephone (#PCDATA)>
+<!ATTLIST telephone type (bureau | direct | fax) #REQUIRED>
+
+<!-- Bloc etat -->
+<!ELEMENT etat (actif?, debut?, fin?)>
+<!ELEMENT actif (#PCDATA)>
+<!ELEMENT debut (#PCDATA)>
+<!ELEMENT fin (#PCDATA)>
+```
+
 ##Références:
 
-[OpenClassroom java xml](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
+[OpenClassroom Java XML](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
 [Syntaxe Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+[Tutu OpenClassroom sur DTD](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/introduction-aux-definitions-et-aux-dtd)
+[Tuto W3C sur DTD (en)](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwiDrurll-fMAhWHBsAKHYdzAegQFggfMAA&url=http%3A%2F%2Fwww.w3schools.com%2Fxml%2Fxml_dtd_intro.asp&usg=AFQjCNGCt7X2oRyUSkTES1aXf8GljqhekA&bvm=bv.122448493,d.ZGg)
 
 ##Fichier des paramètres : 
 
