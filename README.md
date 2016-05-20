@@ -4,7 +4,7 @@ Le but de ce projet est de créer un programme Java permettant d'exporter les ag
 
 ##Utilisation:
 ```
-expagncy -u unum -o fichier.xml -d -t 
+Java ExpAgncy -u unum -o fichier.xml -d -t 
 
 -u unum est la réféence du service d'urgence.
 -o fichier.xml est le nom du fichier qui recevra les agences au format XML.
@@ -14,6 +14,8 @@ expagncy -u unum -o fichier.xml -d -t
 
 ##Pré-requis :
 - Java 6 ou supérieur.
+- JDBC Informix
+- JDBC MySql
 
 ##Format XML reconnu :
 ```
@@ -54,15 +56,17 @@ Nom du fichier : *agences.dtd*
 <!ELEMENT agences (agence*)>
 
 <!-- agence -->
-<!ELEMENT agence (id?, client, nom?, codeAgence, appellationClient?, adressePostale?, email?, telephones?, etat?)>
+<!ELEMENT agence (ids?, noms?, adressePostale?, email?, telephones?, etat?)>
 
-<!-- IDs -->
+<!-- bloc IDs -->
+<!ELEMENT ids (id?, idClient, codeAgence)>
 <!ELEMENT id (#PCDATA)>
-<!ELEMENT client (#PCDATA)>
-
-<!-- Nom, codeAgence et appellation client -->
-<!ELEMENT nom (#PCDATA)>
+<!ELEMENT idClient (#PCDATA)>
 <!ELEMENT codeAgence (#PCDATA)>
+
+<!-- Bloc noms -->
+<!ELEMENT noms (nom?, appellationClient?)>
+<!ELEMENT nom (#PCDATA)>
 <!ELEMENT appellationClient (#PCDATA)>
 
 <!-- Bloc adressePostale -->
@@ -75,7 +79,7 @@ Nom du fichier : *agences.dtd*
 <!-- Email -->
 <!ELEMENT email (#PCDATA)>
 
-<!-- Bloc téléphones -->
+<!-- Bloc telephones -->
 <!ELEMENT telephones (telephone*)>
 <!ELEMENT telephone (#PCDATA)>
 <!ATTLIST telephone type (bureau | direct | fax) #REQUIRED>
@@ -89,14 +93,15 @@ Nom du fichier : *agences.dtd*
 
 ##Références:
 
-[OpenClassroom Java XML](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
-[Syntaxe Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-[Tutu OpenClassroom sur DTD](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/introduction-aux-definitions-et-aux-dtd)
-[Tuto W3C sur DTD (en)](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwiDrurll-fMAhWHBsAKHYdzAegQFggfMAA&url=http%3A%2F%2Fwww.w3schools.com%2Fxml%2Fxml_dtd_intro.asp&usg=AFQjCNGCt7X2oRyUSkTES1aXf8GljqhekA&bvm=bv.122448493,d.ZGg)
+- [OpenClassroom Java XML](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
+- [Syntaxe Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Tuto OpenClassroom sur DTD](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/introduction-aux-definitions-et-aux-dtd)
+- [Tuto W3C sur DTD (en)](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwiDrurll-fMAhWHBsAKHYdzAegQFggfMAA&url=http%3A%2F%2Fwww.w3schools.com%2Fxml%2Fxml_dtd_intro.asp&usg=AFQjCNGCt7X2oRyUSkTES1aXf8GljqhekA&bvm=bv.122448493,d.ZGg)
+- [Validation fichier XML](http://www.xmlvalidation.com/)
 
 ##Fichier des paramètres : 
 
-Ce fichier permert de spécifier les paramètres d'accès aux différentes bases de données.
+Ce fichier permet de spécifier les paramètres d'accès aux différentes bases de données.
 
 A adapter selon les implémentations locales.
 

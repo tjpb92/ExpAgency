@@ -2,15 +2,17 @@
 <!ELEMENT agences (agence*)>
 
 <!-- agence -->
-<!ELEMENT agence (id?, client, nom?, codeAgence, appellationClient?, adressePostale?, email?, telephones?, etat?)>
+<!ELEMENT agence (ids?, noms?, adressePostale?, email?, telephones?, etat?)>
 
-<!-- IDs -->
+<!-- bloc IDs -->
+<!ELEMENT ids (id?, idClient, codeAgence)>
 <!ELEMENT id (#PCDATA)>
-<!ELEMENT client (#PCDATA)>
-
-<!-- Nom, codeAgence et appellation client -->
-<!ELEMENT nom (#PCDATA)>
+<!ELEMENT idClient (#PCDATA)>
 <!ELEMENT codeAgence (#PCDATA)>
+
+<!-- Bloc noms -->
+<!ELEMENT noms (nom?, appellationClient?)>
+<!ELEMENT nom (#PCDATA)>
 <!ELEMENT appellationClient (#PCDATA)>
 
 <!-- Bloc adressePostale -->
@@ -23,7 +25,7 @@
 <!-- Email -->
 <!ELEMENT email (#PCDATA)>
 
-<!-- Bloc téléphones -->
+<!-- Bloc telephones -->
 <!ELEMENT telephones (telephone*)>
 <!ELEMENT telephone (#PCDATA)>
 <!ATTLIST telephone type (bureau | direct | fax) #REQUIRED>
