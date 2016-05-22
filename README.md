@@ -4,12 +4,12 @@ Le but de ce projet est de créer un programme Java permettant d'exporter les ag
 
 ##Utilisation:
 ```
-Java ExpAgncy -u unum -o fichier.xml -d -t 
+Java ExpAgncy -u unum [-o fichier.xml] [-d] [-t] 
 
 -u unum est la réféence du service d'urgence.
--o fichier.xml est le nom du fichier qui recevra les agences au format XML.
--d le programme s'exécute en mode débug, il est beaucoup plus verbeux.
--t le programme s'exécute en mod test, les transcations en base de données ne sont pas faites.
+-o fichier.xml est le nom du fichier qui recevra les agences au format XML (optionnel).
+-d le programme s'exécute en mode débug, il est beaucoup plus verbeux (optionnel).
+-t le programme s'exécute en mod test, les transcations en base de données ne sont pas faites (optionnel).
 ```
 
 ##Pré-requis :
@@ -17,87 +17,25 @@ Java ExpAgncy -u unum -o fichier.xml -d -t
 - JDBC Informix
 - JDBC MySql
 
-##Format XML reconnu :
-```
-<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?>
-<!DOCTYPE agences SYSTEM "agences.dtd">
+##Formats XML reconnus :
 
-<agences>
-  <!--utopia-->
-  <agence>
-    <id>1234</id>
-    <client>99999</client>
-    <nom>utopia</nom>
-    <codeAgence>UTOPIA</codeAgence>
-    <appellationClient>terra incognita</appellationClient>
-    <adresse>12, rue des rèves</adresse>
-    <complement>bâtiment B</complement>
-    <codePostal>92400</codePostal>
-    <ville>UTOPIA CITY</ville>
-    <email>utopia@gmail.com</email>
-    <telephones>
-      <telephone type="bureau">01.01.01.01.01</telephone>
-      <telephone type="direct">02.02.02.02.02</telephone>
-      <telephone type="fax">03.03.03.03.03</telephone>
-    </telephones>
-    <actif>OUI</actif>
-    <debut>2016-05-16 00:00:05</debut>
-    <fin>2050-12-31 23:59:59</fin>
-  </agence>
-</agences>
-```
+Il existe deux types de formats XML reconnus pour décrire les agences :
+- un format simple dit "plat" défini dans le fichier *agences_plat.xsd*. Avec ce format permet le fichier XML des agences peut être importé dans Microsoft Excel.
+- un format plus structuré défini dans le fichier *agences.xsd*.
 
-##DTD officielle :
-
-Nom du fichier : *agences.dtd*
-
-```
-<!-- Racine -->
-<!ELEMENT agences (agence*)>
-
-<!-- agence -->
-<!ELEMENT agence (ids?, noms?, adressePostale?, email?, telephones?, etat?)>
-
-<!-- bloc IDs -->
-<!ELEMENT ids (id?, idClient, codeAgence)>
-<!ELEMENT id (#PCDATA)>
-<!ELEMENT idClient (#PCDATA)>
-<!ELEMENT codeAgence (#PCDATA)>
-
-<!-- Bloc noms -->
-<!ELEMENT noms (nom?, appellationClient?)>
-<!ELEMENT nom (#PCDATA)>
-<!ELEMENT appellationClient (#PCDATA)>
-
-<!-- Bloc adressePostale -->
-<!ELEMENT adressePostale (adresse?, complement?, codePostal?, ville?)>
-<!ELEMENT adresse (#PCDATA)>
-<!ELEMENT complement (#PCDATA)>
-<!ELEMENT codePostal (#PCDATA)>
-<!ELEMENT ville (#PCDATA)>
-
-<!-- Email -->
-<!ELEMENT email (#PCDATA)>
-
-<!-- Bloc telephones -->
-<!ELEMENT telephones (telephone*)>
-<!ELEMENT telephone (#PCDATA)>
-<!ATTLIST telephone type (bureau | direct | fax) #REQUIRED>
-
-<!-- Bloc etat -->
-<!ELEMENT etat (actif?, debut?, fin?)>
-<!ELEMENT actif (#PCDATA)>
-<!ELEMENT debut (#PCDATA)>
-<!ELEMENT fin (#PCDATA)>
-```
+Il existe également un ancien format défini par une DTD dans le fichier *agences.dtd". Le fichier XML résultant n'est pas importable dans Microsoft Excel.
 
 ##Références:
+
+- Construire une application XML, J.C. Bernadac, F. Knab, Eyrolles.
 
 - [OpenClassroom Java XML](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/dom-exemple-d-utilisation-en-java)
 - [Syntaxe Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - [Tuto OpenClassroom sur DTD](https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/introduction-aux-definitions-et-aux-dtd)
 - [Tuto W3C sur DTD (en)](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwiDrurll-fMAhWHBsAKHYdzAegQFggfMAA&url=http%3A%2F%2Fwww.w3schools.com%2Fxml%2Fxml_dtd_intro.asp&usg=AFQjCNGCt7X2oRyUSkTES1aXf8GljqhekA&bvm=bv.122448493,d.ZGg)
 - [Validation fichier XML](http://www.xmlvalidation.com/)
+- [Convertisseur DTD/XSD](http://www.freeformatter.com/xsd-generator.html)
+- [Tuto XML/XSD](http://www.codeguru.com/java/article.php/c13529/XSD-Tutorial-XML-Schemas-For-Beginners.htm)
 
 ##Fichier des paramètres : 
 
