@@ -20,10 +20,10 @@ Java ExpAgncy -u unum [-o fichier.xml] [-d] [-t]
 ##Formats XML reconnus :
 
 Il existe deux types de formats XML reconnus pour décrire les agences :
-- un format simple dit "plat" défini dans le fichier *agences_plat.xsd*. Avec ce format permet le fichier XML des agences peut être importé dans Microsoft Excel.
+- un format simple dit "plat" défini dans le fichier *agences_plat.xsd*. Avec ce format, le fichier XML des agences peut être importé dans Microsoft Excel.
 - un format plus structuré défini dans le fichier *agences.xsd*.
 
-Il existe également un ancien format défini par une DTD dans le fichier *agences.dtd". Le fichier XML résultant n'est pas importable dans Microsoft Excel.
+Il existe également un ancien format défini par une DTD dans le fichier *agences.dtd*. Le fichier XML résultant n'est pas importable dans Microsoft Excel.
 
 ##Références:
 
