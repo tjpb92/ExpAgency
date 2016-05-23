@@ -242,8 +242,7 @@ public class ExpAgency {
             while ((MyFagency = MyFagencyDAO.select()) != null) {
                 i++;
                 System.out.println("Fagency(" + i + ")=" + MyFagency);
-//                MyXMLDocument.AddToXMLDocument(MyFagency);
-                MyXMLDocument.AddToFlatXMLDocument(MyFagency);
+                MyXMLDocument.AddToXMLDocument(MyFagency);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ExpAgency.class.getName()).log(Level.SEVERE, null, ex);
