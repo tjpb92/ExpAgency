@@ -1,68 +1,38 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="agences">
-    <xs:complexType>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:element name="agence">
-          <xs:annotation>
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+    <xs:element name="agence">
+        <xs:annotation>
             <xs:documentation>Commentaire</xs:documentation>
-          </xs:annotation>
-          <xs:complexType>
+        </xs:annotation>
+        <xs:complexType>
             <xs:sequence>
-              <xs:element name="ids">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:short" name="id"/>
-                    <xs:element type="xs:short" name="client"/>
-                    <xs:element type="xs:string" name="codeAgence"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="noms">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="nom"/>
-                    <xs:element type="xs:string" name="appellationClient" minOccurs="0"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="adressePostale">
-                <xs:complexType mixed="true">
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="adresse" minOccurs="0"/>
-                    <xs:element type="xs:int" name="codePostal" minOccurs="0"/>
-                    <xs:element type="xs:string" name="ville" minOccurs="0"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element type="xs:string" name="email" minOccurs="0"/>
-              <xs:element name="telephones">
-                <xs:complexType mixed="true">
-                  <xs:sequence>
-                    <xs:element name="telephone" maxOccurs="unbounded" minOccurs="0">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="type" use="optional"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="etat">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element type="xs:string" name="actif"/>
-                    <xs:element type="xs:string" name="debut"/>
-                    <xs:element type="xs:string" name="fin"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
+                <xs:element type="xs:short" name="id" minOccurs="0"/>
+                <xs:element type="xs:short" name="idClient"/>
+                <xs:element type="xs:string" name="codeAgence"/>
+                <xs:element type="xs:string" name="nom" minOccurs="0"/>
+                <xs:element type="xs:string" name="appellationClient" minOccurs="0"/>
+                <xs:element type="xs:string" name="adresse" minOccurs="0"/>
+                <xs:element type="xs:string" name="complement" minOccurs="0"/>
+                <xs:element type="xs:string" name="codePostal" minOccurs="0"/>
+                <xs:element type="xs:string" name="ville" minOccurs="0"/>
+                <xs:element type="xs:string" name="email" minOccurs="0"/>
+                <xs:element type="xs:string" name="telephone" minOccurs="0"/>
+                <xs:element type="xs:string" name="ligne_directe" minOccurs="0"/>
+                <xs:element type="xs:string" name="fax" minOccurs="0"/>
+                <xs:element type="xs:string" name="actif" minOccurs="0"/>
+                <xs:element type="xs:string" name="debut" minOccurs="0"/>
+                <xs:element type="xs:string" name="fin" minOccurs="0"/>
             </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:choice>
-    </xs:complexType>
-  </xs:element>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="agences">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="agence" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>
