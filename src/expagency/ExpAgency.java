@@ -47,7 +47,7 @@ public class ExpAgency {
             System.out.println(MyArgs);
 
             System.out.println("Lecture du fichier de paramètres ...");
-            MyApplicationProperties = new ApplicationProperties("ExpAgencyPublic.prop");
+            MyApplicationProperties = new ApplicationProperties("MyDatabases.prop");
 
             System.out.println("Lecture des paramètres de base de données ...");
             MyDBServer = new DBServer(MyArgs.getSourceServer(), MyApplicationProperties);

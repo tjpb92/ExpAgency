@@ -1,15 +1,18 @@
-# Projet Export d'agences
+# Projet d'export d'agences
 
 Le but de ce projet est de créer un programme Java permettant d'exporter les agences d'un service d'urgence au format XML.
 
 ##Utilisation:
 ```
-Java ExpAgncy -u unum [-o fichier.xml] [-d] [-t] 
+java ExpAgncy [-dbserver db] -u unum [-o fichier.xml] [-d] [-t] 
 
--u unum est la réféence du service d'urgence.
--o fichier.xml est le nom du fichier qui recevra les agences au format XML (optionnel).
--d le programme s'exécute en mode débug, il est beaucoup plus verbeux (optionnel).
--t le programme s'exécute en mod test, les transcations en base de données ne sont pas faites (optionnel).
+-dbserver db est la référence à la base de données, par défaut désigne la base de données de 
+développement. Voir fichier *MyDatabases.prop* (optionnel).
+-u unum est la référence du service d'urgence (obligatoire).
+-o fichier.xml est le nom du fichier qui recevra les agences au format XML.
+Amorcé à *agences.xml* par défaut (optionnel).
+-d le programme s'exécute en mode débug, il est beaucoup plus verbeux. Désactivé par défaut (optionnel).
+-t le programme s'exécute en mode test, les transcations en base de données ne sont pas faites. Désactivé par défaut (optionnel).
 ```
 
 ##Pré-requis :
@@ -43,7 +46,9 @@ Ce fichier permet de spécifier les paramètres d'accès aux différentes bases 
 
 A adapter selon les implémentations locales.
 
-Ce fichier est nommé : *ExpAgencyPublic.prop*
+Ce fichier est nommé : *MyDatabases.prop*.
+
+Le fichier ci-dessous *MyDatabases_Example.prop" est donné à titre d'exemple.
 ```
 # Properties for production environnement
 prod.dbserver.name=eole
