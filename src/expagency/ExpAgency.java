@@ -50,35 +50,35 @@ public class ExpAgency {
     private boolean testMode = false;
 
   /**
-   * @return SourceServer : retourne la valeur pour le serveur source.
+   * @return SourceServer : la valeur pour le serveur source.
    */
   private String getSourceServer() {
     return(SourceServer);
   }
 
   /**
-   * @return FileOut : retourne le nom du fichier où envoyer les résultats.
+   * @return FileOut : le nom du fichier où envoyer les résultats.
    */
   private String getFileOut() {
     return(FileOut);
   }
 
   /**
-   * @return Unum : retourne la référence du client.
+   * @return Unum : la référence du client.
    */
   private int getUnum() {
     return(unum);
   }
 
   /**
-   * @return daemonMode : retourne le mode de fonctionnement debug.
+   * @return daemonMode : le mode de fonctionnement debug.
    */
   private boolean getDebugMode() {
     return(debugMode);
   }
   
   /**
-   * @return testMode : retourne le mode de fonctionnement test.
+   * @return testMode : le mode de fonctionnement test.
    */
   private boolean getTestMode() {
     return(testMode);
@@ -226,7 +226,7 @@ public class ExpAgency {
         getArgs(Args);
 
         System.out.println("Lecture du fichier de paramètres ...");
-        MyApplicationProperties = new ApplicationProperties("ExpAgencyPublic.prop");
+        MyApplicationProperties = new ApplicationProperties("MyDatabases.prop");
 
         System.out.println("Lecture des paramètres de base de données ...");
         MyDBServer = new DBServer(getSourceServer(), MyApplicationProperties);

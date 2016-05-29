@@ -1,0 +1,5 @@
+# My .gitignore file
+
+MyDatabases.prop
+agence*.xml
+
