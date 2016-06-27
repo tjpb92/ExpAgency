@@ -4,8 +4,8 @@ package expagency;
  * Classe qui définit une exception lancée en cas d'erreur lors de
  * l'instanciation de la classe ImpAgency.
  *
- * @version Mai 2016.
- * @author Thierry Baribaud.
+ * @version Mai 2016
+ * @author Thierry Baribaud
  */
 class ExpAgencyException extends Exception {
 
