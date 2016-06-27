@@ -1,13 +1,14 @@
-/*
- * Cette classe sert à vérifier et à récupérer les arguments passés en ligne de
- * commande à un programme.
- * @version Mai 2016.
- * @author Thierry Baribaud.
- */
 package expagency;
 
 import java.util.Date;
 
+/**
+ * Cette classe sert à vérifier et à récupérer les arguments passés en ligne de
+ * commande à un programme.
+ *
+ * @version Juin 2016
+ * @author Thierry Baribaud
+ */
 public class GetArgs {
 
     /**
@@ -28,8 +29,6 @@ public class GetArgs {
      */
     private String FileOut = "agences.xml";
 
-    
-    
     /**
      * debugMode : fonctionnement du programme en mode debug (true/false).
      * Valeur par défaut : false.
@@ -43,35 +42,35 @@ public class GetArgs {
     private boolean testMode = false;
 
     /**
-     * @return SourceServer : retourne la valeur pour le serveur source.
+     * @return SourceServer : la valeur pour le serveur source.
      */
     public String getSourceServer() {
         return (SourceServer);
     }
 
     /**
-     * @return FileOut : retourne le nom du fichier où envoyer les résultats.
+     * @return FileOut : le nom du fichier où envoyer les résultats.
      */
     public String getFileOut() {
         return (FileOut);
     }
 
     /**
-     * @return Unum : retourne la référence du client.
+     * @return Unum : la référence du client.
      */
     public int getUnum() {
         return (unum);
     }
 
     /**
-     * @return debugMode : retourne le mode de fonctionnement debug.
+     * @return debugMode : le mode de fonctionnement debug.
      */
     public boolean getDebugMode() {
         return (debugMode);
     }
 
     /**
-     * @return testMode : retourne le mode de fonctionnement test.
+     * @return testMode : le mode de fonctionnement test.
      */
     public boolean getTestMode() {
         return (testMode);
@@ -99,7 +98,8 @@ public class GetArgs {
     }
 
     /**
-     * @param debugMode : fonctionnement du programme en mode debug (true/false).
+     * @param debugMode : fonctionnement du programme en mode debug
+     * (true/false).
      */
     public void setDebugMode(boolean debugMode) {
         this.debugMode = debugMode;
@@ -113,21 +113,24 @@ public class GetArgs {
     }
 
     /**
-     * <p>Les arguments en ligne de commande permettent de changer le mode de 
+     * <p>
+     * Les arguments en ligne de commande permettent de changer le mode de
      * fonctionnement.</p><ul>
-     * <li>-dbserver : référence à la base de donnée, par défaut fait référence 
-     * à la base de développement,  cf. fichier de paramètres 
+     * <li>-dbserver : référence à la base de donnée, par défaut fait référence
+     * à la base de développement, cf. fichier de paramètres
      * <i>myDatabases.prop</i> (optionnel)</li>
      * <li>-u unum : identifiant du service d'urgence (obligatoire).</li>
-     * <li>-o fichier : fichier vers lequel exporter les données de l'agence, 
+     * <li>-o fichier : fichier vers lequel exporter les données de l'agence,
      * nom par défaut <i>agences.xml</i>(optionnel).</li>
-     * <li>-d : le programme fonctionne en mode débug le rendant plus verbeux, 
+     * <li>-d : le programme fonctionne en mode débug le rendant plus verbeux,
      * désactivé par défaut (optionnel).</li>
-     * <li>-t : le programme fonctionne en mode de test, les transactions en base 
-     *      de données ne sont pas exécutées, désactivé par défaut (optionnel).</li>
+     * <li>-t : le programme fonctionne en mode de test, les transactions en
+     * base de données ne sont pas exécutées, désactivé par défaut
+     * (optionnel).</li>
      * </ul>
-     * @param Args arguments de la ligne de commande. 
-     * @throws GetArgsException 
+     *
+     * @param Args arguments de la ligne de commande.
+     * @throws GetArgsException erreur sur les paramètres.
      */
     public GetArgs(String Args[]) throws GetArgsException {
 
@@ -184,27 +187,28 @@ public class GetArgs {
             i++;
         }
     }
-        
+
     /**
      * Affiche le mode d'utilisation du programme.
      */
     public static void usage() {
-        System.out.println("Usage : java ExpCalls -dbserver prod -u unum " +
-                           " [-o fichier.xml] [-d] [-t]");
+        System.out.println("Usage : java ExpCalls -dbserver prod -u unum "
+                + " [-o fichier.xml] [-d] [-t]");
     }
-    
+
     /**
      * Affiche le contenu de GetArgs.
+     *
      * @return retourne le contenu de GetArgs.
      */
     @Override
     public String toString() {
-    return this.getClass().getName() +
-           " : {dbServer=" + SourceServer + 
-           ", unum=" + unum + 
-           ", fichier=" + FileOut +
-           ", debugMode=" + debugMode + 
-           ", testMode=" + testMode +
-           "}";
+        return this.getClass().getName()
+                + " : {dbServer=" + SourceServer
+                + ", unum=" + unum
+                + ", fichier=" + FileOut
+                + ", debugMode=" + debugMode
+                + ", testMode=" + testMode
+                + "}";
     }
 }

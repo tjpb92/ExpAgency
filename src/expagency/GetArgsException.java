@@ -1,12 +1,12 @@
-/**
- * Classe qui définit une exception lancée en cas d'erreur lors de
- * l'analyse des arguments de ligne de commande.
- *
- * @version Mai 2016.
- * @author Thierry Baribaud.
- */
 package expagency;
 
+/**
+ * Classe qui définit une exception lancée en cas d'erreur lors de l'analyse des
+ * arguments de ligne de commande.
+ *
+ * @version Mai 2016
+ * @author Thierry Baribaud
+ */
 public class GetArgsException extends Exception {
 
     /**

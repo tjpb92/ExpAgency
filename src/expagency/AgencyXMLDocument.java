@@ -1,24 +1,23 @@
-/*
- * Classe pour générer un fichier au format XML décrivant des agences
- * @version Mai 2016.
- * @author Thierry Baribaud.
- */
 package expagency;
 
-import agency.Fagency;
+import bdd.Fagency;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import liba2pi.XMLDocument;
+import utils.XMLDocument;
 import org.w3c.dom.Comment;
 import org.w3c.dom.Element;
 
+/**
+ * Classe pour générer un fichier au format XML décrivant des agences
+ * @version Mai 2016
+ * @author Thierry Baribaud
+ */
 public class AgencyXMLDocument extends XMLDocument {
 
     public AgencyXMLDocument(String RootName, String XsdFile) {
         super(RootName, XsdFile);
     }
-
 
     /**
      * Ajoute une agence au document XML.
